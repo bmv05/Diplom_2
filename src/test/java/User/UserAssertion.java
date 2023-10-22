@@ -24,4 +24,10 @@ public class UserAssertion {
                 .statusCode(HttpURLConnection.HTTP_FORBIDDEN)
                 .body("message", equalTo("Email, password and name are required fields"));
     }
+    public static void assertUserDelete(ValidatableResponse loginResponse) {
+        loginResponse
+                .assertThat()
+                .statusCode(HttpURLConnection.HTTP_ACCEPTED)
+                .body("message", equalTo("User successfully removed"));
+    }
 }
