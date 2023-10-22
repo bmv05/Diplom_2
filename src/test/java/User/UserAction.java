@@ -29,5 +29,14 @@ public class UserAction {
                 .delete("/api/auth/user")
                 .then().log().all();
     }
+    public static ValidatableResponse updateUser(UserUpdate userUpdate,String accessToken) {
+        return given().log().all()
+                .contentType(ContentType.JSON)
+                .header("authorization", accessToken)
+                .body(userUpdate)
+                .when()
+                .patch("/api/auth/user")
+                .then().log().all();
+    }
 
 }

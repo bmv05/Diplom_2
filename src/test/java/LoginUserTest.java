@@ -24,6 +24,7 @@ public class LoginUserTest {
         RestAssured.baseURI = "https://stellarburgers.nomoreparties.site/";
         ValidatableResponse response = UserAction.createNewUser(user);
         UserAssertion.assertSuccessfulCreation(response);
+        accessToken = response.extract().path("accessToken");
     }
     @After
     public void deleteUser() {

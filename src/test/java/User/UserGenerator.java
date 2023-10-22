@@ -8,20 +8,20 @@ public class UserGenerator {
       return new User(
               RandomStringUtils.randomAlphabetic(5, 10).toLowerCase() + "@stellar.ru",
               "Pas" + RandomUtils.nextInt(1, 1000),
-              "Name1");
+              RandomStringUtils.randomAlphabetic(5,15));
     }
     public static User randomUserWithoutLogin(){
       return new User(
               "",
               "Pas" + RandomUtils.nextInt(1, 1000),
-              "Name1");
+              RandomStringUtils.randomAlphabetic(5,15));
     }
 
     public static User randomUserWithoutPassword(){
         return new User(
                 RandomStringUtils.randomAlphabetic(5, 10).toLowerCase() + "@stellar.ru",
                 "",
-                "Name1");
+                RandomStringUtils.randomAlphabetic(5,15));
     }
     public static User randomUserWithoutName(){
         return new User(

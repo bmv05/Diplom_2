@@ -42,4 +42,10 @@ public class UserAssertion {
                 .statusCode(HttpURLConnection.HTTP_UNAUTHORIZED)
                 .body("message", equalTo("email or password are incorrect"));
     }
+    public static void assertSuccessfulUpdate (ValidatableResponse response) {
+        response
+                .assertThat()
+                .statusCode(HttpURLConnection.HTTP_OK)
+                .body("success", equalTo(true));
+    }
 }
