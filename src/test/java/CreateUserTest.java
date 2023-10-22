@@ -23,7 +23,7 @@ public class CreateUserTest {
         RestAssured.baseURI = "https://stellarburgers.nomoreparties.site/";
     }
 
-   @After
+    @After
     public void deleteUser() {
         if (!accessToken.isEmpty()) {
             ValidatableResponse deleteUser = UserAction.deleteCreatedUser(accessToken);
@@ -37,11 +37,6 @@ public class CreateUserTest {
         ValidatableResponse response = UserAction.createNewUser(user);
         UserAssertion.assertSuccessfulCreation(response);
         accessToken = response.extract().path("accessToken");
-
-
-        //System.out.println("Печать токена: " + accessToken);
-        //ValidatableResponse deleteUser = UserAction.deleteCreatedUser(accessToken);
-        //UserAssertion.assertUserDelete(deleteUser);
     }
 
     @Test
