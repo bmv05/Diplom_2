@@ -11,6 +11,12 @@ public class UserAssertion {
                 .statusCode(HttpURLConnection.HTTP_OK)
                 .body("success", equalTo(true));
     }
+    public static void assertSuccessfulAuthorization (ValidatableResponse response) {
+        response
+                .assertThat()
+                .statusCode(HttpURLConnection.HTTP_OK)
+                .body("success", equalTo(true));
+    }
 
     public static void assertUserExist(ValidatableResponse loginResponse) {
         loginResponse

@@ -18,6 +18,7 @@ import org.junit.Test;
 public class CreateUserTest {
     private String accessToken = "";
 
+
     @Before
     public void setUp() {
         RestAssured.baseURI = "https://stellarburgers.nomoreparties.site/";
