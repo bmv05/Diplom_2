@@ -11,12 +11,6 @@ public class UserAssertion {
                 .statusCode(HttpURLConnection.HTTP_OK)
                 .body("success", equalTo(true));
     }
-    public static void assertSuccessfulAuthorization (ValidatableResponse response) {
-        response
-                .assertThat()
-                .statusCode(HttpURLConnection.HTTP_OK)
-                .body("success", equalTo(true));
-    }
 
     public static void assertUserExist(ValidatableResponse loginResponse) {
         loginResponse
@@ -35,5 +29,17 @@ public class UserAssertion {
                 .assertThat()
                 .statusCode(HttpURLConnection.HTTP_ACCEPTED)
                 .body("message", equalTo("User successfully removed"));
+    }
+    public static void assertSuccessfulAuthorization (ValidatableResponse response) {
+        response
+                .assertThat()
+                .statusCode(HttpURLConnection.HTTP_OK)
+                .body("success", equalTo(true));
+    }
+    public static void assertRequiredFieldsWrongFilledIn (ValidatableResponse response) {
+        response
+                .assertThat()
+                .statusCode(HttpURLConnection.HTTP_UNAUTHORIZED)
+                .body("message", equalTo("email or password are incorrect"));
     }
 }

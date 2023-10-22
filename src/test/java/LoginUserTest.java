@@ -24,12 +24,10 @@ public class LoginUserTest {
         RestAssured.baseURI = "https://stellarburgers.nomoreparties.site/";
         ValidatableResponse response = UserAction.createNewUser(user);
         UserAssertion.assertSuccessfulCreation(response);
-        accessToken = response.extract().path("accessToken");
     }
     @After
     public void deleteUser() {
         if (!accessToken.isEmpty()) {
-            System.out.println("Токен перед удалением: " + accessToken);
             ValidatableResponse deleteUser = UserAction.deleteCreatedUser(accessToken);
             UserAssertion.assertUserDelete(deleteUser);
         }
@@ -40,5 +38,24 @@ public class LoginUserTest {
         ValidatableResponse responseAuth = UserAction.authorizationUser(userCredential);
         UserAssertion.assertSuccessfulAuthorization(responseAuth);
     }
+    @Test
+    public void errorAuthorizationUserWrongPassword() {
+        UserCredentials userCredential = UserCredentials.wrongPassword(user);
+        ValidatableResponse responseAuth = UserAction.authorizationUser(userCredential);
+        UserAssertion.assertRequiredFieldsWrongFilledIn(responseAuth);
+    }
+    @Test
+    public void errorAuthorizationUserWrongEmail() {
+        UserCredentials userCredential = UserCredentials.wrongEmail(user);
+        ValidatableResponse responseAuth = UserAction.authorizationUser(userCredential);
+        UserAssertion.assertRequiredFieldsWrongFilledIn(responseAuth);
+    }
+    @Test
+    public void errorAuthorizationUserWrongEmailAndPassword() {
+        UserCredentials userCredential = UserCredentials.wrongEmailAndPassword(user);
+        ValidatableResponse responseAuth = UserAction.authorizationUser(userCredential);
+        UserAssertion.assertRequiredFieldsWrongFilledIn(responseAuth);
+    }
+
 }
 
