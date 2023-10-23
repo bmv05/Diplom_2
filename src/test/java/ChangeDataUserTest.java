@@ -59,11 +59,21 @@ public class ChangeDataUserTest {
     }
 
 
-/*    @Test
-    public void errorUserUpdateEmail(){
+    @Test
+    public void errorUserUpdateEmail() {
+        User secondUser = UserGenerator.randomUser();
+        ValidatableResponse response = UserAction.createNewUser(secondUser);
+        UserAssertion.assertSuccessfulCreation(response);
+        String secondAccessToken = response.extract().path("accessToken");
+
+        ValidatableResponse responseUpdate = UserAction.updateUserEmail(this.user, secondAccessToken);
+        UserAssertion.assertErrorBecauseEmailExist(responseUpdate);
+
+        ValidatableResponse deleteUser = UserAction.deleteCreatedUser(secondAccessToken);
+        UserAssertion.assertUserDelete(deleteUser);
 
     }
-
+/*
     @Test
     public void errorUserUpdateNonAuthorization(){
 
