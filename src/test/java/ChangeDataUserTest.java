@@ -73,10 +73,13 @@ public class ChangeDataUserTest {
         UserAssertion.assertUserDelete(deleteUser);
 
     }
-/*
+
     @Test
     public void errorUserUpdateNonAuthorization(){
+    UserUpdate userChanges = UserUpdate.changeNameAndPassword(user);
+        ValidatableResponse responseUpdate = UserAction.updateUserWithoutToken(userChanges);
+        UserAssertion.assertSuccessfulUpdate(responseUpdate);
 
-    }*/
+    }
 
 }

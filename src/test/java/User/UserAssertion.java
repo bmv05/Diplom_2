@@ -54,4 +54,10 @@ public class UserAssertion {
                 .statusCode(HttpURLConnection.HTTP_FORBIDDEN)
                 .body("message", equalTo("User with such email already exists"));
     }
+    public static void assertErrorW (ValidatableResponse response) {
+        response
+                .assertThat()
+                .statusCode(HttpURLConnection.HTTP_FORBIDDEN)
+                .body("message", equalTo("User with such email already exists"));
+    }
 }

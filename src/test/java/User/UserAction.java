@@ -38,6 +38,14 @@ public class UserAction {
                 .patch("/api/auth/user")
                 .then().log().all();
     }
+    public static ValidatableResponse updateUserWithoutToken(UserUpdate userUpdate) {
+        return given().log().all()
+                .contentType(ContentType.JSON)
+                .body(userUpdate)
+                .when()
+                .patch("/api/auth/user")
+                .then().log().all();
+    }
     public static ValidatableResponse updateUserEmail(User user,String accessToken) {
         return given().log().all()
                 .contentType(ContentType.JSON)
