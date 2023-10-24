@@ -54,10 +54,10 @@ public class UserAssertion {
                 .statusCode(HttpURLConnection.HTTP_FORBIDDEN)
                 .body("message", equalTo("User with such email already exists"));
     }
-    public static void assertErrorW (ValidatableResponse response) {
+    public static void assertErrorWithoutAuthorization (ValidatableResponse response) {
         response
                 .assertThat()
-                .statusCode(HttpURLConnection.HTTP_FORBIDDEN)
-                .body("message", equalTo("User with such email already exists"));
+                .statusCode(HttpURLConnection.HTTP_UNAUTHORIZED)
+                .body("message", equalTo("You should be authorised"));
     }
 }
