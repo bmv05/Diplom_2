@@ -10,7 +10,7 @@ import io.restassured.response.ValidatableResponse;
 import org.junit.Before;
 import org.junit.Test;
 
-public class ReceivingOrders {
+public class ReceivingOrdersTest {
     private String accessToken;
     User user = UserGenerator.randomUser();
 
