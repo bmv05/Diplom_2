@@ -23,4 +23,17 @@ public class OrderAction {
                 .post("/api/orders")
                 .then().log().all();
     }
+    public static ValidatableResponse showOrdersWithAuthorization(String accessToken) {
+        return given().log().all()
+                .header("authorization", accessToken)
+                .when()
+                .get("/api/orders")
+                .then().log().all();
+    }
+    public static ValidatableResponse showOrdersWithoutAuthorization() {
+        return given().log().all()
+                .when()
+                .get("/api/orders")
+                .then().log().all();
+    }
 }

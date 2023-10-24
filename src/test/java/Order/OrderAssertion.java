@@ -26,4 +26,15 @@ public class OrderAssertion {
                 .assertThat()
                 .statusCode(HttpURLConnection.HTTP_INTERNAL_ERROR);
     }
+    public static void assertShowOrdersWithAuthorization(ValidatableResponse response) {
+        response
+                .assertThat()
+                .statusCode(HttpURLConnection.HTTP_OK);
+    }
+    public static void assertErrorShowOrdersWithoutAuthorization(ValidatableResponse response) {
+        response
+                .assertThat()
+                .statusCode(HttpURLConnection.HTTP_UNAUTHORIZED)
+                .body("message", equalTo("You should be authorised"));
+    }
 }
