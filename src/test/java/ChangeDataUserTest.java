@@ -1,10 +1,3 @@
-/*Изменение данных пользователя:
-        с авторизацией,
-        без авторизации,
-        Для обеих ситуаций нужно проверить, что любое поле можно изменить.
-        Для неавторизованного пользователя — ещё и то, что система вернёт ошибку.*/
-
-
 import User.User;
 import User.UserGenerator;
 import User.UserAction;
@@ -75,8 +68,8 @@ public class ChangeDataUserTest {
     }
 
     @Test
-    public void errorUserUpdateNonAuthorization(){
-    UserUpdate userChanges = UserUpdate.changeNameAndPassword(user);
+    public void errorUserUpdateNonAuthorization() {
+        UserUpdate userChanges = UserUpdate.changeNameAndPassword(user);
         ValidatableResponse responseUpdate = UserAction.updateUserWithoutToken(userChanges);
         UserAssertion.assertErrorWithoutAuthorization(responseUpdate);
 

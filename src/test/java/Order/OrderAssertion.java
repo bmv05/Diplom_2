@@ -19,18 +19,21 @@ public class OrderAssertion {
                 .assertThat()
                 .statusCode(HttpURLConnection.HTTP_BAD_REQUEST)
                 .body("success", equalTo(false))
-                .body("message",equalTo("Ingredient ids must be provided"));
+                .body("message", equalTo("Ingredient ids must be provided"));
     }
+
     public static void assertInternalServerError(ValidatableResponse response) {
         response
                 .assertThat()
                 .statusCode(HttpURLConnection.HTTP_INTERNAL_ERROR);
     }
+
     public static void assertShowOrdersWithAuthorization(ValidatableResponse response) {
         response
                 .assertThat()
                 .statusCode(HttpURLConnection.HTTP_OK);
     }
+
     public static void assertErrorShowOrdersWithoutAuthorization(ValidatableResponse response) {
         response
                 .assertThat()

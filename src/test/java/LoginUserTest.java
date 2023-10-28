@@ -1,9 +1,3 @@
-/*
-Логин пользователя:
-        логин под существующим пользователем,
-        логин с неверным логином и паролем.
-*/
-
 import User.User;
 import User.UserGenerator;
 import User.UserAction;
@@ -26,6 +20,7 @@ public class LoginUserTest {
         UserAssertion.assertSuccessfulCreation(response);
         accessToken = response.extract().path("accessToken");
     }
+
     @After
     public void deleteUser() {
         if (!accessToken.isEmpty()) {
@@ -33,24 +28,28 @@ public class LoginUserTest {
             UserAssertion.assertUserDelete(deleteUser);
         }
     }
+
     @Test
     public void successfulAuthorizationUser() {
         UserCredentials userCredential = UserCredentials.from(user);
         ValidatableResponse responseAuth = UserAction.authorizationUser(userCredential);
         UserAssertion.assertSuccessfulAuthorization(responseAuth);
     }
+
     @Test
     public void errorAuthorizationUserWrongPassword() {
         UserCredentials userCredential = UserCredentials.wrongPassword(user);
         ValidatableResponse responseAuth = UserAction.authorizationUser(userCredential);
         UserAssertion.assertRequiredFieldsWrongFilledIn(responseAuth);
     }
+
     @Test
     public void errorAuthorizationUserWrongEmail() {
         UserCredentials userCredential = UserCredentials.wrongEmail(user);
         ValidatableResponse responseAuth = UserAction.authorizationUser(userCredential);
         UserAssertion.assertRequiredFieldsWrongFilledIn(responseAuth);
     }
+
     @Test
     public void errorAuthorizationUserWrongEmailAndPassword() {
         UserCredentials userCredential = UserCredentials.wrongEmailAndPassword(user);

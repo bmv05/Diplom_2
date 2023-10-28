@@ -15,6 +15,7 @@ public class OrderAction {
                 .post("/api/orders")
                 .then().log().all();
     }
+
     public static ValidatableResponse createNewOrderWithoutAuthorization(Order order) {
         return given().log().all()
                 .contentType(ContentType.JSON)
@@ -23,6 +24,7 @@ public class OrderAction {
                 .post("/api/orders")
                 .then().log().all();
     }
+
     public static ValidatableResponse showOrdersWithAuthorization(String accessToken) {
         return given().log().all()
                 .header("authorization", accessToken)
@@ -30,6 +32,7 @@ public class OrderAction {
                 .get("/api/orders")
                 .then().log().all();
     }
+
     public static ValidatableResponse showOrdersWithoutAuthorization() {
         return given().log().all()
                 .when()

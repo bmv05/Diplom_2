@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: ReceivingOrdersTest
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 28.062 s - in ReceivingOrdersTest
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 16.374 s - in ReceivingOrdersTest

@@ -14,6 +14,7 @@ public class UserAction {
                 .post("/api/auth/register")
                 .then().log().all();
     }
+
     public static ValidatableResponse authorizationUser(UserCredentials userCredential) {
         return given().log().all()
                 .contentType(ContentType.JSON)
@@ -22,6 +23,7 @@ public class UserAction {
                 .post("/api/auth/login")
                 .then().log().all();
     }
+
     public static ValidatableResponse deleteCreatedUser(String accessToken) {
         return given().log().all()
                 .header("authorization", accessToken)
@@ -29,7 +31,8 @@ public class UserAction {
                 .delete("/api/auth/user")
                 .then().log().all();
     }
-    public static ValidatableResponse updateUser(UserUpdate userUpdate,String accessToken) {
+
+    public static ValidatableResponse updateUser(UserUpdate userUpdate, String accessToken) {
         return given().log().all()
                 .contentType(ContentType.JSON)
                 .header("authorization", accessToken)
@@ -38,6 +41,7 @@ public class UserAction {
                 .patch("/api/auth/user")
                 .then().log().all();
     }
+
     public static ValidatableResponse updateUserWithoutToken(UserUpdate userUpdate) {
         return given().log().all()
                 .contentType(ContentType.JSON)
@@ -46,7 +50,8 @@ public class UserAction {
                 .patch("/api/auth/user")
                 .then().log().all();
     }
-    public static ValidatableResponse updateUserEmail(User user,String accessToken) {
+
+    public static ValidatableResponse updateUserEmail(User user, String accessToken) {
         return given().log().all()
                 .contentType(ContentType.JSON)
                 .header("authorization", accessToken)

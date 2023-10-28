@@ -29,6 +29,7 @@ public class ReceivingOrdersTest {
         ValidatableResponse response = OrderAction.showOrdersWithAuthorization(accessToken);
         OrderAssertion.assertShowOrdersWithAuthorization(response);
     }
+
     @Test
     public void receivingListOrderWithoutAuthorization() {
         Order order = OrderGenerator.withOneIngredient();
