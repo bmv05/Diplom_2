@@ -21,7 +21,7 @@ public class ReceivingOrdersTest {
 
     @Test
     public void receivingListOrderWithAuthorization() {
-        Order order = OrderGenerator.withOneIngredient();
+        Order order = OrderGenerator.withIngredient();
         accessToken = UserAction.createNewUser(user).extract().path("accessToken");
         for (int i = 1; i <= 5; i++) {
             OrderAction.createNewOrderWithAuthorization(order, accessToken);
@@ -32,7 +32,7 @@ public class ReceivingOrdersTest {
 
     @Test
     public void receivingListOrderWithoutAuthorization() {
-        Order order = OrderGenerator.withOneIngredient();
+        Order order = OrderGenerator.withIngredient();
         accessToken = UserAction.createNewUser(user).extract().path("accessToken");
         for (int i = 1; i <= 5; i++) {
             OrderAction.createNewOrderWithAuthorization(order, accessToken);

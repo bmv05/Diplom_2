@@ -21,7 +21,7 @@ public class CreateOrderTest {
 
     @Test
     public void createOrderWithAuthorization() {
-        Order order = OrderGenerator.withOneIngredient();
+        Order order = OrderGenerator.withIngredient();
         accessToken = UserAction.createNewUser(user).extract().path("accessToken");
         ValidatableResponse response = OrderAction.createNewOrderWithAuthorization(order, accessToken);
         OrderAssertion.assertSuccessfulOrderCreation(response);
@@ -29,7 +29,7 @@ public class CreateOrderTest {
 
     @Test
     public void createOrderWithoutAuthorization() {
-        Order order = OrderGenerator.withOThreeIngredient();
+        Order order = OrderGenerator.withIngredient();
         ValidatableResponse response = OrderAction.createNewOrderWithoutAuthorization(order);
         OrderAssertion.assertSuccessfulOrderCreation(response);
     }
